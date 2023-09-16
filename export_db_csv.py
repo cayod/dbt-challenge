@@ -25,7 +25,6 @@ def init_db():
     
     return cnx
 
-
 def fetch_table_data(table_name):
 
     cnx = init_db()
@@ -47,7 +46,8 @@ def export(table_name):
     header, rows = fetch_table_data(table_name)
 
     # Create csv file
-    f = open(f'seeds/{table_name}.csv', 'w')
+    table = table_name.split('.')[1]
+    f = open(f'seeds/{table}.csv', 'w')
 
     # Write header
     f.write(','.join(header) + '\n')
@@ -81,10 +81,10 @@ def get_tables(query):
     data = []
     for row in results:
         schema_name, table_name = row
-        data.append(f'{schema_name}.{table_name}')
-
+        if schema_name != 'public':
+            data.append(f'{schema_name}.{table_name}')
+        
     return data
-
 
 
 data = get_tables(QUERY_TABLES)
