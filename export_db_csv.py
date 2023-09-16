@@ -58,6 +58,7 @@ def export(table_name):
     f.close()
     print(str(len(rows)) + ' rows written successfully to ' + f.name)
 
+
 def get_tables(query):
 
     conn = init_db()
@@ -86,8 +87,19 @@ def get_tables(query):
         
     return data
 
+# Delete , from csv file
+def clean_csv(table):
+    with open(f'seeds/{table}.csv', 'r') as f:
+        lines = f.readlines()
+
+    with open(f'seeds/{table}.csv', 'w') as f:
+        for line in lines:
+            f.write(line.replace(', ', ' '))
+
+
 
 data = get_tables(QUERY_TABLES)
 
 for table in data:
     export(table)
+    clean_csv(table.split('.')[1])

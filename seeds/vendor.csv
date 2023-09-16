@@ -2,12 +2,12 @@ businessentityid,accountnumber,name,creditrating,preferredvendorstatus,activefla
 1492,AUSTRALI0001,Australia Bike Retailer,1,True,True,None,2011-12-23 00:00:00
 1494,ALLENSON0001,Allenson Cycles,2,True,True,None,2011-04-25 00:00:00
 1496,ADVANCED0001,Advanced Bicycles,1,True,True,None,2011-04-25 00:00:00
-1498,TRIKES0001,Trikes, Inc.,2,True,True,None,2012-02-03 00:00:00
+1498,TRIKES0001,Trikes Inc.,2,True,True,None,2012-02-03 00:00:00
 1500,MORGANB0001,Morgan Bike Accessories,1,True,True,None,2012-02-02 00:00:00
 1502,CYCLING0001,Cycling Master,1,True,True,None,2011-12-24 00:00:00
 1504,CHICAGO0002,Chicago Rent-All,2,True,True,None,2011-12-24 00:00:00
 1506,GREENWOO0001,Greenwood Athletic Company,1,True,True,None,2012-01-25 00:00:00
-1508,COMPETE0001,Compete Enterprises, Inc,1,True,True,None,2011-12-24 00:00:00
+1508,COMPETE0001,Compete Enterprises Inc,1,True,True,None,2011-12-24 00:00:00
 1510,INTERNAT0001,International,1,True,True,None,2012-01-25 00:00:00
 1512,LIGHTSP0001,Light Speed,1,True,True,None,2011-12-23 00:00:00
 1514,TRAINING0001,Training Systems,1,True,True,None,2012-02-03 00:00:00
@@ -37,13 +37,13 @@ businessentityid,accountnumber,name,creditrating,preferredvendorstatus,activefla
 1562,NORSTAN0001,Norstan Bike Hut,1,True,True,None,2012-02-02 00:00:00
 1564,ILLINOIS0001,Illinois Trek & Clothing,1,True,True,None,2011-12-23 00:00:00
 1566,BURNETT0001,Burnett Road Warriors,1,True,True,None,2011-12-23 00:00:00
-1568,CUSTOMF0001,Custom Frames, Inc.,2,True,True,None,2012-01-17 00:00:00
+1568,CUSTOMF0001,Custom Frames Inc.,2,True,True,None,2012-01-17 00:00:00
 1570,FIRSTRA0001,First Rate Bicycles,1,True,True,None,2012-01-25 00:00:00
 1572,NATIONAL0001,National Bike Association,1,True,True,None,2012-02-02 00:00:00
 1574,JEFFSSP0001,Jeff's Sporting Goods,1,True,True,None,2011-12-24 00:00:00
 1576,SUPERIOR0001,Superior Bicycles,1,True,True,None,2012-02-03 00:00:00
-1578,VISIONC0001,Vision Cycles, Inc.,1,False,True,None,2012-02-18 00:00:00
-1580,LITWARE0001,Litware, Inc.,1,True,True,www.litwareinc.com/,2011-04-25 00:00:00
+1578,VISIONC0001,Vision Cycles Inc.,1,False,True,None,2012-02-18 00:00:00
+1580,LITWARE0001,Litware Inc.,1,True,True,www.litwareinc.com/,2011-04-25 00:00:00
 1582,INNERCI0001,Inner City Bikes,3,True,True,None,2012-01-25 00:00:00
 1584,TREYRE0001,Trey Research,3,True,True,www.treyresearch.net/,2012-01-25 00:00:00
 1586,MITCHELL0001,Mitchell Sports,1,True,True,None,2012-02-02 00:00:00
@@ -59,8 +59,8 @@ businessentityid,accountnumber,name,creditrating,preferredvendorstatus,activefla
 1606,NORTHW0001,Northwind Traders,1,True,True,www.northwindtraders.com/,2012-01-25 00:00:00
 1608,SPORTPL0001,Sport Playground,1,True,True,None,2012-02-02 00:00:00
 1610,HYBRIDB0001,Hybrid Bicycle Center,1,True,True,None,2012-01-25 00:00:00
-1612,MIDWEST0001,Midwest Sport, Inc.,1,True,True,None,2012-02-02 00:00:00
-1614,RELIANCE0001,Reliance Fitness, Inc.,2,False,False,None,2012-02-02 00:00:00
+1612,MIDWEST0001,Midwest Sport Inc.,1,True,True,None,2012-02-02 00:00:00
+1614,RELIANCE0001,Reliance Fitness Inc.,2,False,False,None,2012-02-02 00:00:00
 1616,AURORAB0001,Aurora Bike Center,1,True,True,None,2011-05-09 00:00:00
 1618,METROSP0001,Metro Sport Equipment,1,True,True,None,2012-01-29 00:00:00
 1620,LAKEWOOD0001,Lakewood Bicycle,1,True,True,None,2012-01-29 00:00:00
@@ -92,14 +92,14 @@ businessentityid,accountnumber,name,creditrating,preferredvendorstatus,activefla
 1672,EXPERTB0001,Expert Bike Co,1,True,True,None,2012-01-25 00:00:00
 1674,VARSITY0001,Varsity Sport Co.,1,True,True,None,2012-02-18 00:00:00
 1676,TEAMATH0001,Team Athletic Co.,1,True,True,None,2012-02-03 00:00:00
-1678,PROSE0001,Proseware, Inc.,4,False,False,www.proseware.com/,2011-05-09 00:00:00
+1678,PROSE0001,Proseware Inc.,4,False,False,www.proseware.com/,2011-05-09 00:00:00
 1680,JACKSON0001,Jackson Authority,1,True,True,None,2012-01-25 00:00:00
-1682,PREMIER0001,Premier Sport, Inc.,1,True,True,None,2012-02-02 00:00:00
+1682,PREMIER0001,Premier Sport Inc.,1,True,True,None,2012-02-02 00:00:00
 1684,PROFESSI0001,Professional Athletic Consultants,1,True,True,None,2012-02-02 00:00:00
 1686,PROSPOR0001,Pro Sport Industries,1,False,True,None,2012-02-02 00:00:00
 1688,WOODFIT0001,Wood Fitness,1,True,True,None,2012-02-18 00:00:00
 1690,BLOOMING0001,Bloomington Multisport,1,True,True,None,2011-12-23 00:00:00
 1692,CARLSON0001,Carlson Specialties,2,True,True,None,2011-12-24 00:00:00
-1694,COMPETE0002,Compete, Inc.,1,True,True,None,2011-12-24 00:00:00
+1694,COMPETE0002,Compete Inc.,1,True,True,None,2011-12-24 00:00:00
 1696,CHICAGO0001,Chicago City Saddles,1,True,True,None,2011-12-24 00:00:00
 1698,BUSINESS0001,Business Equipment Center,2,True,True,None,2011-12-23 00:00:00
