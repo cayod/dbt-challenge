@@ -94,6 +94,7 @@ def clean_csv(table):
 
     with open(f'seeds/{table}.csv', 'w') as f:
         for line in lines:
+            f.write(line.replace('"', "'"))
             f.write(line.replace(', ', ' '))
 
 
