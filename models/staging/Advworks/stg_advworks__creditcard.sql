@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('Advworks', 'creditcard') }}
+    select * from {{ source('advworks', 'creditcard') }}
 
 ),
 

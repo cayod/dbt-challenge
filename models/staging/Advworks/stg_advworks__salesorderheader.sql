@@ -2,14 +2,14 @@ with
 
 source as (
 
-    select * from {{ source('Advworks', 'salesorderheader') }}
+    select * from {{ source('advworks', 'salesorderheader') }}
 
 ),
 
 renamed as (
 
     select
-        salesorderid as sales_order_id
+        cast(salesorderid as string) as sales_order_id
         , cast(orderdate as date) as order_date
         , extract(month from orderdate) as order_month_date
         , extract(year from orderdate) as order_year_date
@@ -18,7 +18,7 @@ renamed as (
         , status as order_status
         , customerid as customer_id
         , territoryid as territory_id
-        , creditcardid as credit_card_id
+        , cast(creditcardid as string) as credit_card_id
         , billtoaddressid as bill_to_address_id
         , subtotal as order_subtotal
         , taxamt as order_tax_amount

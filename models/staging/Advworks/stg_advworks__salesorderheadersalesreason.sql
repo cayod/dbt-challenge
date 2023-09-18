@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('Advworks', 'salesorderheadersalesreason') }}
+    select * from {{ source('advworks', 'salesorderheadersalesreason') }}
 
 ),
 

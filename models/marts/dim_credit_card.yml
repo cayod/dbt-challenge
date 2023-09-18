@@ -1,0 +1,16 @@
+version: 2
+
+models: 
+  - name: dim_credit_card
+    description: Customer credit card informations.
+    
+    columns:
+      - name: credit_card_sk
+        description: Incremental surrugate key. It's dim_credit_card Primary Key and Foreign key to fact_sales.
+        tests:
+          - not_null
+          - unique
+      - name: credit_card_id
+        description: Credit Card ID. Primary key of creditcard raw data.
+      - name: credit_card_type
+        description: Credit card type used to place the order.

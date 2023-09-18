@@ -2,16 +2,16 @@ with
 
 source as (
 
-    select * from {{ source('Advworks', 'address') }}
+    select * from {{ source('advworks', 'address') }}
 
 ),
 
-, address as(    
+ address as(    
     select
         addressid as address_id
         , city
         , stateprovinceid as state_province_id
-        , cast(modifieddate as date) as updated_date 
+        , modifieddate as updated_date 
     from source
 )
 

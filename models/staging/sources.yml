@@ -2,7 +2,7 @@
 version: 2
 
 sources:
-  - name: Advworks
+  - name: advworks
     description: AdventureWorks raw data from BigQuery
     schema: dbt_cdias
     tables: 
