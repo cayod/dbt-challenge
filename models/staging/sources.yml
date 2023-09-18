@@ -1,0 +1,39 @@
+
+version: 2
+
+sources:
+  - name: Advworks
+    description: AdventureWorks raw data from BigQuery
+    schema: dbt_cdias
+    tables: 
+      - name: salesorderdetail
+        description: Individual products associated with a specific sales order raw data.
+        columns:
+          - name: salesorderid
+            description: '{{ doc("salesorderid") }}'
+          - name: salesorderdetailid
+            description: '{{ doc("salesorderdetailid") }}'
+            tests:
+              - unique
+              - not_null
+          - name: carriertrackingnumber
+            description: '{{ doc("carriertrackingnumber") }}'
+          - name: orderqty
+            description: '{{ doc("orderqty") }}'
+          - name: productid
+            description: '{{ doc("productid") }}'
+          - name: specialofferid
+            description: '{{ doc("specialofferid") }}'
+          - name: unitprice
+            description: '{{ doc("unitprice") }}'
+          - name: unitpricediscount
+            description: '{{ doc("unitpricediscount") }}'
+          - name: linetotal
+            description: '{{ doc("linetotal") }}'
+          - name: rowguid
+            description: '{{ doc("rowguid") }}'
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: '{{ doc("modifieddate") }}'
