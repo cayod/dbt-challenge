@@ -54,7 +54,7 @@ sources:
             description: Name of the city.
           - name: stateprovinceid
             description: Unique identification number for the state or province. Foreign key to StateProvince table.
-            testes: 
+            tests: 
               - unique
               - not_null
           - name: postalcode
