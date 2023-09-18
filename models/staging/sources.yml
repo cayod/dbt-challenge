@@ -10,30 +10,331 @@ sources:
         description: Individual products associated with a specific sales order raw data.
         columns:
           - name: salesorderid
-            description: '{{ doc("salesorderid") }}'
+            description: Primary key for sales orders records. Foreign key to SalesOrderHeader.SalesOrderID.
           - name: salesorderdetailid
-            description: '{{ doc("salesorderdetailid") }}'
+            description: Primary key. One incremental unique number per product sold.
             tests:
               - unique
               - not_null
           - name: carriertrackingnumber
-            description: '{{ doc("carriertrackingnumber") }}'
+            description: Shipment tracking number supplied by the shipper.
           - name: orderqty
-            description: '{{ doc("orderqty") }}'
+            description: Quantity ordered per product.
           - name: productid
-            description: '{{ doc("productid") }}'
+            description: Product sold to customer. Foreign key to Product.ProductID.
           - name: specialofferid
-            description: '{{ doc("specialofferid") }}'
+            description: Promotional code. Foreign key to SpecialOffer.SpecialOfferID.
           - name: unitprice
-            description: '{{ doc("unitprice") }}'
+            description: Selling price of a single product.
           - name: unitpricediscount
-            description: '{{ doc("unitpricediscount") }}'
+            description: Single product discount amount.
           - name: linetotal
-            description: '{{ doc("linetotal") }}'
+            description: Per product subtotal. Computed as UnitPrice * (1 - UnitPriceDiscount) * OrderQty.
           - name: rowguid
-            description: '{{ doc("rowguid") }}'
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
             tests:
               - unique
               - not_null
           - name: modifieddate
-            description: '{{ doc("modifieddate") }}'
+            description: Date and time the record was last updated.
+
+      - name: address
+        description: Street address information for customers, employees, and vendors raw data.
+        columns:
+          - name: addressid
+            description: Primary key for ADress records.
+            tests:
+              - unique
+              - not_null
+          - name: addressline1
+            description: First street address line.
+          - name: addressline2
+            description: Second street address line.
+          - name: city
+            description: Name of the city.
+          - name: stateprovinceid
+            description: Unique identification number for the state or province. Foreign key to StateProvince table.
+            testes: 
+              - unique
+              - not_null
+          - name: postalcode
+            description: Postal code for the street address.
+          - name: spatiallocation
+            description: Latitude and longitude of this address.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: countryregion
+        description: Lookup table containing the ISO standard codes for countries and regions raw data.
+        columns:
+          - name: countryregioncode
+            description: ISO standard code for countries and regions.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Country or region name.
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: product
+        description: Products sold or used in the manfacturing of sold products raw data.
+        columns:
+          - name: productid
+            description: Primary key for Product records.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Name of the product.
+          - name: productnumber
+            description: Unique product identification number.
+            tests:
+              - unique
+          - name: makeflag
+            description: 0 = Product is purchased, 1 = Product is manufactured in-house.
+          - name: finishedgoodsflag
+            description: 0 = Product is not a salable item. 1 = Product is salable.
+          - name: color
+            description: Product color.
+          - name: safetystocklevel
+            description: Minimum inventory quantity.
+          - name: reorderpoint
+            description: Inventory level that triggers a purchase order or work order.
+          - name: standardcost
+            description: Standard cost of the product.
+          - name: listprice
+            description: Selling price.
+          - name: size
+            description: Product size.
+          - name: sizeunitmeasurecode
+            description: Unit of measure for Size column.
+          - name: weightunitmeasurecode
+            description: Unit of measure for Weight column.
+          - name: weight
+            description: Product weight.
+          - name: daystomanufacture
+            description: Number of days required to manufacture the product.
+          - name: productline
+            description: R = Road, M = Mountain, T = Touring, S = Standard.
+          - name: class
+            description: H = High, M = Medium, L = Low.
+          - name: style
+            description: W = Womens, M = Mens, U = Universal
+          - name: productsubcategoryid
+            description: Product is a member of this product subcategory. Foreign key to ProductSubCategory.ProductSubCategoryID.
+          - name: productmodelid
+            description: Product is a member of this product model. Foreign key to ProductModel.ProductModelID.
+          - name: sellstartdate
+            description: Date the product was available for sale.
+          - name: sellenddate
+            description: Date the product was no longer available for sale.
+          - name: discontinueddate
+            description: Date the product was discontinued.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: creditcard
+        description: Customer credit card information raw data.
+        columns:
+          - name: creditcardid
+            description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
+            tests:
+              - unique
+              - not_null
+          - name: cardtype
+            description: Credit card name.
+          - name: cardnumber
+            description: Credit card number.
+          - name: expmonth
+            description: Credit card expiration month.
+          - name: expyear
+            description: Credit card expiration year.
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: customer
+        description: Current customer information raw data.
+        columns:
+          - name: customerid
+            description: Customer primary key.
+            tests:
+              - unique
+              - not_null
+          - name: personid
+            description: Foreign key to Person.BusinessEntityID.
+            tests:
+              - unique
+          - name: storeid
+            description: Foreign key to Store.BusinessEntityID.
+          - name: territoryid
+            description: ID of the territory in which the customer is located. Foreign key to SalesTerritory.SalesTerritoryID.
+          - name: accountnumber
+            description: Unique number identifying the customer assigned by the accounting system.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: person
+        description: Human beings involved with AdventureWorks, such as employees, customer contacts, and vendor contacts raw data.
+        columns:
+          - name: businessentityid
+            description: Primary key for Person records.
+            tests:
+              - unique
+              - not_null
+          - name: persontype
+            description: Primary type of person. SC = Store Contact, IN = Individual (retail) customer, SP = Sales person, EM = Employee (non-sales), VC = Vendor contact, GC = General contact
+          - name: namestyle
+            description: Name following the region style. 0 = The data in FirstName and LastName are stored in western style (first name, last name) order. 1 = Eastern style (last name, first name) order
+          - name: title
+            description: A courtesy title. For example, Mr. or Ms.
+          - name: firstname
+            description: First name of the person.
+          - name: middlename
+            description: Middle name of the person.
+          - name: lastname
+            description: Last name of the person.
+          - name: suffix
+            description: Surname suffix. For example, Sr. or Jr.
+          - name: emailpromotion
+            description: Email promotion type. 0 = Contact does not wish to receive e-mail promotions, 1 = Contact does wish to receive e-mail promotions from AdventureWorks, 2 = Contact does wish to receive e-mail promotions from AdventureWorks and selected partners.
+          - name: additionalcontactinfo
+            description: Additional contact information about the person stored in xml format.
+          - name: demographics
+            description: Personal information such as hobbies, and income collected from online shoppers. Used for sales analysis.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: salesorderheader
+        description: General sales order information raw data.
+        columns:
+          - name: salesorderid
+            description: Primary key for sales orders records.
+            tests:
+              - unique
+              - not_null
+          - name: revisionnumber
+            description: Incremental number to track changes to the sales order over time.
+          - name: orderdate
+            description: Dates the sales order was created.
+              - not_null
+          - name: duedate
+            description: Date the order is due to the customer.
+          - name: shipdate
+            description: Date the order was shipped to the customer.
+          - name: status
+            description: Order current status. 1 = In process; 2 = Approved; 3 = Backordered; 4 = Rejected; 5 = Shipped; 6 = Canceled.
+          - name: onlineorderflag
+            description: Online order flag. 0 = Order placed by sales person. 1 = Order placed online by customer.
+          - name: salesordernumber
+            description: Unique sales order identification number.
+          - name: purchaseordernumber
+            description: Customer purchase order number reference.
+          - name: accountnumber
+            description: Financial accounting number reference.
+          - name: customerid
+            description: Customer identification number. Foreign key to Customer.BusinessEntityID.
+          - name: salespersonid
+            description: Sales person who created the sales order. Foreign key to SalesPerson.BusinessEntityID.
+          - name: territoryid
+            description: Dates the sales order was created.
+          - name: billtoaddressid
+            description: Customer billing address. Foreign key to Address.AddressID.
+          - name: shiptoaddressid
+            description: Customer shipping address. Foreign key to Address.AddressID.
+          - name: shipmethodid
+            description: Shipping method. Foreign key to ShipMethod.ShipMethodID.
+          - name: creditcardid
+            description: Credit card identification number. Foreign key to CreditCard.CreditCardID.
+          - name: creditcardapprovalcode
+            description: Approval code provided by the credit card company.
+          - name: currencyrateid
+            description: Currency exchange rate used. Foreign key to CurrencyRate.CurrencyRateID.
+          - name: subtotal
+            description: Sales subtotal. Computed as SUM(SalesOrderDetail.LineTotal)for the appropriate SalesOrderID.
+          - name: taxamt
+            description: Sales tax amount.
+          - name: freight
+            description: Sales shipping cost.
+          - name: totaldue
+            description: Total due from customer. Computed as Subtotal + TaxAmt + Freight.
+          - name: comment
+            description: Sales representative comments.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: salesorderheadersalesreason
+        description: Cross-reference table mapping sales orders to sales reason codes raw data.
+        columns:
+          - name: salesorderid
+            description: Primary key. Foreign key to SalesOrderHeader.SalesOrderID.
+          - name: salesreasonid
+            description: Primary key. Foreign key to SalesReason.SalesReasonID.
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: salesreason
+        description: Lookup table of customer purchase reasons raw data.
+        columns:
+          - name: salesreasonid
+            description: Primary key for sales reason records.
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: Sales reason name, such as 'price', 'promotion', and others.
+          - name: reasontype
+            description: Sales reason type, such as 'marketing', 'promotion', and others.
+          - name: modifieddate
+            description: Date and time the record was last updated.
+
+      - name: stateprovince
+        description: State and province lookup raw data.
+        columns:
+          - name: stateprovinceid
+            description: Primary key for StateProvince records.
+            tests:
+              - unique
+              - not_null
+          - name: stateprovincecode
+            description: ISO standard state or province code.
+          - name: countryregioncode
+            description: ISO standard country or region code. Foreign key to CountryRegion.CountryRegionCode.
+          - name: isonlystateprovinceflag
+            description: 0 = StateProvinceCode exists. 1 = StateProvinceCode unavailable, using CountryRegionCode.
+          - name: name
+            description: State or province description.
+          - name: territoryid
+            description: Primary key for SalesTerritory records.
+          - name: rowguid
+            description: ROWGUIDCOL number uniquely identifying the record. Used to support a merge replication sample.
+            tests:
+              - unique
+              - not_null
+          - name: modifieddate
+            description: Date and time the record was last updated.
