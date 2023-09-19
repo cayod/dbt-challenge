@@ -1,0 +1,57 @@
+version: 2
+
+models: 
+  - name: fact_sales
+    description: Sales fact table with informations about the orders and order details, together with the dimensions tables foreign keys.
+    columns:
+      - name: sales_sk
+        description: Incremental surrugate key.
+        tests:
+          - not_null
+          - unique
+      - name: sales_order_id
+        description: Sale Order ID. Primary key of sales.salesorderheader raw data.
+          - not_null
+          - unique
+      - name: customer_fk
+        description: dim_customers Foreign key.
+        tests:
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_sk
+      - name: address_fk
+        description: dim_address Foreign key.
+        tests:
+          - relationships:
+              to: ref('dim_address')
+              field: address_sk
+      - name: credit_card_fk
+        description: dim_credit_card Foreign key.
+        tests:
+          - relationships:
+              to: ref('dim_creditcard')
+              field: credit_card_sk
+      - name: sales_reason_fk
+        description: dim_sales_reason Foreign key.
+        tests:
+          - relationships:
+              to: ref('dim_salesreason')
+              field: sales_reason_sk
+      - name: product_fk
+        description: dim_products Foreign key.
+        tests:
+          - relationships:
+              to: ref('dim_salesproducts')
+              field: products_sk
+      - name: order_status
+        description: Order status. Main status is currently 'shipped'.
+      - name: order_quantity
+        description: Quantity ordered per product.
+      - name: order_unit_price
+        description: Selling price of a single product.
+      - name: order_date
+        description: 	Dates the sales order was created.
+      - name: order_month_date
+        description: Month extracted from the order date.
+      - name: order_year_date
+        description: Year extracted from the order date.

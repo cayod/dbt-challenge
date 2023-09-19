@@ -1,0 +1,16 @@
+version: 2
+
+models: 
+  - name: dim_products
+    description: Product description.
+    
+    columns:
+      - name: product_sk
+        description: Incremental surrugate key. It's dim_products Primary Key and Foreign key to fact_sales.
+        tests:
+          - not_null
+          - unique
+      - name: product_id
+        description: Product ID. Primary Key of product.
+      - name: product_name
+        description: Product name.

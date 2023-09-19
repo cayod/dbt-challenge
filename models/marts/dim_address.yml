@@ -1,0 +1,20 @@
+version: 2
+
+models: 
+  - name: dim_address
+    description: Customer address
+    
+    columns:
+      - name: address_sk
+        description: Incremental surrugate key. It's dim_address Primary Key and Foreign key to fact_sales.
+        tests:
+          - not_null
+          - unique
+      - name: address_id
+        description: Address ID. Foreign Key of person.address raw data.
+      - name: city
+        description: Customer city.
+      - name: state
+        description: Customer state.
+      - name: country
+        description: Customer country.

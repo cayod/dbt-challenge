@@ -1,0 +1,16 @@
+version: 2
+
+models: 
+  - name: dim_customers
+    description: Customers name and address 
+    
+    columns:
+      - name: customer_sk
+        description: Incremental surrugate key. It's dim_customers Primary Key and Foreign key to fact_sales.
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: Customer ID. Primary key of customer raw data.
+      - name: customer_name
+        description: Customer's full name.

@@ -2,7 +2,7 @@
 version: 2
 
 sources:
-  - name: Advworks
+  - name: advworks
     description: AdventureWorks raw data from BigQuery
     schema: dbt_cdias
     tables: 
@@ -54,8 +54,7 @@ sources:
             description: Name of the city.
           - name: stateprovinceid
             description: Unique identification number for the state or province. Foreign key to StateProvince table.
-            testes: 
-              - unique
+            tests: 
               - not_null
           - name: postalcode
             description: Postal code for the street address.
@@ -173,8 +172,6 @@ sources:
               - not_null
           - name: personid
             description: Foreign key to Person.BusinessEntityID.
-            tests:
-              - unique
           - name: storeid
             description: Foreign key to Store.BusinessEntityID.
           - name: territoryid

@@ -1,0 +1,18 @@
+version: 2
+
+models: 
+  - name: dim_sales_reason
+    description: Sale reason information.
+    
+    columns:
+      - name: sales_reason_sk
+        description: Incremental surrugate key. It's dim_sales_reason Primary Key and Foreign key to fact_sales.
+        tests:
+          - not_null
+          - unique
+      - name: sales_order_id
+        description: Sale Order ID. Primary key of salesorderheadersalereason raw data.
+      - name: sales_reason_id
+        description: Sale Reason ID. Primary key of salesreason raw data.
+      - name: sale_reason
+        description: Main reason why the customer bought the product.

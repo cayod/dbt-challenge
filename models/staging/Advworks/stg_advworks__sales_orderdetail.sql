@@ -1,13 +1,13 @@
 with sales_order_detail_source as(
     select *
-    from {{ source('Advworks', 'salesorderdetail') }}
+    from {{ source('advworks', 'salesorderdetail') }}
 )
 
 , sales_order_detail as(
     select
-        salesorderid as sales_order_id
+        cast(salesorderid as string) as sales_order_id
         , salesorderdetailid as sales_order_detail_id
-        , productid as product_id
+        , cast(productid as string) as product_id
         , orderqty as order_quantity
         , unitprice as order_unit_price
         , unitpricediscount as order_unit_price_discount
