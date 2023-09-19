@@ -76,6 +76,6 @@ def clean_csv(table):
 
 
 
-# for table in tables_name:
-export('person.address')
-clean_csv('person.address'.split('.')[1])
+for table in tables_name:
+    export(table)
+    clean_csv(table.split('.')[1])
