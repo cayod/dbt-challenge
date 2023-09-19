@@ -58,13 +58,16 @@ def clean_csv(table):
         lines = f.readlines()
 
     with open(f'seeds/{table}.csv', 'w') as f:
-        for line in lines:
-            f.write(line.replace(', ', ' '))
+        for l in lines:
+            f.write(l.replace(", ", " "))
+
+    with open(f'seeds/{table}.csv', 'r') as f:
+        lines = f.readlines()
 
     if table == 'address':
         with open(f'seeds/{table}.csv', 'w') as f:
             for line in lines:
-                f.write(line.replace(',,', ','))
+                f.write(line.replace(",,", ","))
     
     if table == 'person':
         df = pd.read_csv(f'seeds/{table}.csv')
@@ -73,6 +76,6 @@ def clean_csv(table):
 
 
 
-for table in tables_name:
-    export(table)
-    clean_csv(table.split('.')[1])
+# for table in tables_name:
+export('person.address')
+clean_csv('person.address'.split('.')[1])
