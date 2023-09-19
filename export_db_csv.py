@@ -61,9 +61,10 @@ def clean_csv(table):
         for line in lines:
             f.write(line.replace(', ', ' '))
     
-    df = pd.read_csv(f'seeds/{table}.csv')
-    df = df.replace('"', "'", regex=True)
-    df.to_csv(f'seeds/{table}.csv', index=False)
+    if table == 'person':
+        df = pd.read_csv(f'seeds/{table}.csv')
+        df = df.replace('"', "'", regex=True)
+        df.to_csv(f'seeds/{table}.csv', index=False)
 
 
 
