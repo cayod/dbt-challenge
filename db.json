@@ -1,94 +1,27 @@
 [
     {
-        "schema": "humanresources",
-        "table": [
-            "department",
-            "employee",
-            "employeedepartmenthistory",
-            "employeepayhistory",
-            "jobcandidate",
-            "shift"
-        ]
-    },
-    {
         "schema": "person",
         "table": [
             "address",
-            "addresstype",
-            "businessentity",
-            "businessentityaddress",
-            "businessentitycontact",
-            "contacttype",
             "countryregion",
-            "emailaddress",
-            "password",
             "person",
-            "personphone",
-            "phonenumbertype",
             "stateprovince"
         ]
     },
     {
         "schema": "production",
         "table": [
-            "billofmaterials",
-            "culture",
-            "document",
-            "illustration",
-            "location",
-            "product",
-            "productcategory",
-            "productcosthistory",
-            "productdescription",
-            "productdocument",
-            "productinventory",
-            "productlistpricehistory",
-            "productmodel",
-            "productmodelillustration",
-            "productmodelproductdescriptionculture",
-            "productphoto",
-            "productproductphoto",
-            "productreview",
-            "productsubcategory",
-            "scrapreason",
-            "transactionhistory",
-            "transactionhistoryarchive",
-            "unitmeasure",
-            "workorder",
-            "workorderrouting"
-        ]
-    },
-    {
-        "schema": "purchasing",
-        "table": [
-            "productvendor",
-            "purchaseorderdetail",
-            "purchaseorderheader",
-            "shipmethod",
-            "vendor"
+            "product"
         ]
     },
     {
         "schema": "sales",
         "table":[
-            "countryregioncurrency",
             "creditcard",
-            "currency",
-            "currencyrate",
-            "customer",
-            "persontocreditcard",
             "salesorderdetail",
             "salesorderheader",
             "salesorderheadersalesreason",
-            "salesperson",
-            "salespersonquotahistory",
             "salesreason",
-            "salestaxrate",
-            "salesterritory",
-            "salesterritoryhistory",
-            "shoppingcartitem",
-            "specialoffer",
-            "specialofferproduct",
-            "store"]
+            "customer"]
     }
 ]

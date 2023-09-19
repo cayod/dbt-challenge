@@ -13,6 +13,8 @@ QUERY_TABLES = """
         ORDER BY schema_name, table_name
     """
 
+tables_name = ['address', 'countryregion', 'creditcard', 'customer', 'person', 'salesorderdetail', 'salesorderheader', 'stateprovince', 'product', 'salesorderheadersalesreason']
+
 # Load environment variables
 load_dotenv()
 
@@ -102,5 +104,7 @@ def clean_csv(table):
 data = get_tables(QUERY_TABLES)
 
 for table in data:
-    export(table)
-    clean_csv(table.split('.')[1])
+    for table_name in tables_name:
+        if table_name == table.split('.')[1]:
+            export(table)
+            clean_csv(table.split('.')[1])
