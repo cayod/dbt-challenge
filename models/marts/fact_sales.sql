@@ -8,7 +8,7 @@ with address as(
 , credit_card as (
     select
         credit_card_sk
-        , cast(credit_card_id as string) as credit_card_id
+        , credit_card_id
     from {{ ref('dim_credit_card') }}
 )
 
@@ -86,11 +86,11 @@ with address as(
     select
         row_number() over(order by sales_order_header.sales_order_id) as sales_sk
         , sales_order_header.sales_order_id
-        , sales_order_header.customer_fk
-        , sales_order_header.address_fk
+        , cast(sales_order_header.customer_fk as string) as customer_fk
+        , cast(sales_order_header.address_fk as string) as address_fk
         , sales_order_header.credit_card_fk
         , sales_order_header.sales_reason_fk
-        , sales_order_detail.product_fk
+        , cast(sales_order_detail.product_fk as string) as product_fk
         , sales_order_header.order_status
         , sales_order_detail.order_quantity
         , sales_order_detail.order_unit_price

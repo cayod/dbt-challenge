@@ -24,7 +24,7 @@ with address_cte as(
 , joined_tables as(
     select
         row_number() over (order by address_cte.address_id) as address_sk
-        , address_id
+        , cast(address_id as string) as address_id
         , city
         , state_province_cte.state
         , country_region_cte.country
@@ -33,5 +33,9 @@ with address_cte as(
     left join country_region_cte on state_province_cte.country_region_code = country_region_cte.country_region_code
 )
 
-select *
+select cast(address_sk as string) as address_sk
+    , address_id
+    , city
+    , state
+    , country
 from joined_tables

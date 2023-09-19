@@ -19,7 +19,7 @@ renamed as (
         , customerid as customer_id
         , territoryid as territory_id
         , cast(creditcardid as string) as credit_card_id
-        , billtoaddressid as bill_to_address_id
+        , cast(billtoaddressid as string) as bill_to_address_id
         , subtotal as order_subtotal
         , taxamt as order_tax_amount
         , freight as order_freight
