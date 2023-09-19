@@ -1,19 +1,10 @@
 import psycopg2
 from dotenv import load_dotenv
 import os
-from psycopg2 import sql
+import pandas as pd
 
-QUERY_TABLES = """
-        SELECT n.nspname AS schema_name, c.relname AS table_name
-        FROM pg_namespace n
-        LEFT JOIN pg_class c ON n.oid = c.relnamespace
-        WHERE n.nspname NOT LIKE 'pg_%'
-        AND n.nspname != 'information_schema'
-        AND c.relkind = 'r'
-        ORDER BY schema_name, table_name
-    """
 
-tables_name = ['address', 'countryregion', 'creditcard', 'customer', 'person', 'salesorderdetail', 'salesorderheader', 'stateprovince', 'product', 'salesorderheadersalesreason']
+tables_name = ['person.address', 'person.countryregion', 'sales.creditcard', 'sales.customer', 'person.person', 'sales.salesorderdetail', 'sales.salesorderheader', 'person.stateprovince', 'production.product', 'sales.salesorderheadersalesreason', 'sales.salesreason']
 
 # Load environment variables
 load_dotenv()
@@ -61,34 +52,6 @@ def export(table_name):
     print(str(len(rows)) + ' rows written successfully to ' + f.name)
 
 
-def get_tables(query):
-
-    conn = init_db()
-
-    # Create a cursor object to interact with the database
-    cur = conn.cursor()
-
-    # SQL query to retrieve schema names and table names
-    query = sql.SQL(query)
-
-    # Execute the query
-    cur.execute(query)
-
-    # Fetch all the results
-    results = cur.fetchall()
-
-    # Close the cursor and database connection
-    cur.close()
-    conn.close()
-
-    data = []
-    for row in results:
-        schema_name, table_name = row
-        if schema_name != 'public':
-            data.append(f'{schema_name}.{table_name}')
-        
-    return data
-
 # Delete , from csv file
 def clean_csv(table):
     with open(f'seeds/{table}.csv', 'r') as f:
@@ -96,15 +59,14 @@ def clean_csv(table):
 
     with open(f'seeds/{table}.csv', 'w') as f:
         for line in lines:
-            f.write(line.replace('"', "'"))
             f.write(line.replace(', ', ' '))
+    
+    df = pd.read_csv(f'seeds/{table}.csv')
+    df = df.replace('"', "'", regex=True)
+    df.to_csv(f'seeds/{table}.csv', index=False)
 
 
 
-data = get_tables(QUERY_TABLES)
-
-for table in data:
-    for table_name in tables_name:
-        if table_name == table.split('.')[1]:
-            export(table)
-            clean_csv(table.split('.')[1])
+for table in tables_name:
+    export(table)
+    clean_csv(table.split('.')[1])
