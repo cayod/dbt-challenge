@@ -2,9 +2,9 @@
 version: 2
 
 sources:
-  - name: advworks
+  - name: data_source
     description: AdventureWorks raw data from BigQuery
-    schema: dbt_cdias
+    schema: data_source
     tables: 
       - name: salesorderdetail
         description: Individual products associated with a specific sales order raw data.
