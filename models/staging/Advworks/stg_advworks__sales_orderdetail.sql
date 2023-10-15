@@ -1,6 +1,6 @@
 with sales_order_detail_source as(
     select *
-    from {{ source('advworks', 'salesorderdetail') }}
+    from {{ source('data_source', 'salesorderdetail') }}
 )
 
 , sales_order_detail as(

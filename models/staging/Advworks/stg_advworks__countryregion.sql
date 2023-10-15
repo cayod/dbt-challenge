@@ -2,7 +2,7 @@ with
 
 source as (
 
-    select * from {{ source('advworks', 'countryregion') }}
+    select * from {{ source('data_source', 'countryregion') }}
 
 ),
 
