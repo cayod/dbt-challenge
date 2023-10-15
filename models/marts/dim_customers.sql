@@ -1,7 +1,7 @@
 with customer_cte as (
     select
         customer_id
-        , person_id
+        , cast(person_id as string) as person_id
     from {{ ref('stg_advworks__customer') }}
     where person_id is not null
 )
