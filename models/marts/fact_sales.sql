@@ -92,8 +92,8 @@ with address as(
         , sales_order_header.sales_reason_fk
         , cast(sales_order_detail.product_fk as string) as product_fk
         , sales_order_header.order_status
-        , sales_order_detail.order_quantity
-        , sales_order_detail.order_unit_price
+        , cast(sales_order_detail.order_quantity as FLOAT64) as order_quantity
+        , cast(sales_order_detail.order_unit_price as FLOAT64) as order_unit_price
         , sales_order_header.order_date
         , sales_order_header.order_month_date
         , sales_order_header.order_year_date
