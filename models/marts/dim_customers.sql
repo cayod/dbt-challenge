@@ -25,5 +25,8 @@ with customer_cte as (
     left join person_cte on customer_cte.person_id = person_cte.business_entity_id
 )
 
-select *
+select 
+    cast(customer_sk as string) as customer_sk
+    , customer_id
+    , customer_name
 from joined_tables
