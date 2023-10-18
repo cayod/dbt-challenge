@@ -138,8 +138,6 @@ At first, the AdventureWorks data were extracted from the transactional database
 
 In the data transformation phase, dbt was used, where the staging folder contains the sources YAML file (sources). At this stage, only the tables that would be used to assemble the fact tables and dimensions (DW Conceptual Diagram) were chosen.
 
-Thus, using good modeling practices, with a staging for each source, the SAP (erp source) folder was created with the company's erp data.
-
 To answer the business questions, 5 dimensions and 1 fact were created:
 
 - dim_address: retrieve the customer address information such as city, state and country;
